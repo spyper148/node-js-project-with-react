@@ -1,7 +1,9 @@
 "use client"
 
-import {getMessage} from "@/lib/api/message";
+import Button from "@/components/Button";
+import Message from "@/app/message/page";
 import {useEffect, useState} from "react";
+import {getMessage} from "@/lib/api/message";
 
 export default function Home() {
   const [message, setMessage] = useState();
@@ -12,11 +14,19 @@ export default function Home() {
   };
 
   useEffect(() => {
-    load();
   })
   return (
   <div>
-    <h2>{message}</h2>
+    <Button
+    className="w-100 cursor-pointer"
+    onClick={() => {
+      load();
+    }}
+    >
+      Getting message
+    </Button>
+    <div className="w-100 flex justify-center items-center">{message}</div>
   </div>
+
   );
 }
